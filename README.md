@@ -1,10 +1,10 @@
-<h1 align="center">所需即所获：像 IDE 一样使用 vim</h1>
+<h1 align="center> What You Need Is What You Get: Use vim as IDE</h1>
 yangyangwithgnu@yeah.net  
 2015-11-08 10:05:53
 
 
-##谢谢
-
+## Thanks
+ 
 **捐赠：支付宝 yangyangwithgnu@yeah.net 。支付宝链接 https://shenghuo.alipay.com/send/payment/fill.htm?optEmail=yangyangwithgnu@yeah.net ，支付宝二维码 $_$**
 <div align="center">
 <img src="https://raw.githubusercontent.com/yangyangwithgnu/yangyangwithgnu.github.io/master/pics/donate_qr.png" alt=""/><br>
@@ -28,64 +28,65 @@ yangyangwithgnu@yeah.net
 * v0.1.0，2014-10-13，新增。发布初始版本。
 
 
-##【目录】
+## [Table of Content]
 ----
 
-[0 vim 必知会 ](#0)  
-........[0.1 .vimrc 文件 ](#0.1)  
-........[0.2 .vim/ 目录 ](#0.2)  
-[1 源码安装编辑器 vim ](#1)  
-[2 插件管理 ](#2)  
-[3 界面美化 ](#3)  
-........[3.1 主题风格 ](#3.1)  
+[0 vim Must-know ](#0)  
+........[0.1 .vimrc File ](#0.1)  
+........[0.2 .vim/ Directory ](#0.2)  
+[1 Install vim From Sources](#1)  
+[2 Plugin Management ](#2)  
+[3 Interface Refinement ](#3)  
+........[3.1 Themes ](#3.1)  
 ........[3.2 营造专注氛围 ](#3.2)  
-........[3.3 添加辅助信息 ](#3.3)  
-........[3.4 其他 ](#3.4)  
-[4 代码分析 ](#4)  
-........[4.1 语法高亮 ](#4.1)  
-........[4.2 代码缩进 ](#4.2)  
-........[4.3 代码折叠 ](#4.3)  
-........[4.4 接口与实现快速切换 ](#4.4)  
+........[3.3 Helper Messages ](#3.3)  
+........[3.4 Misc ](#3.4)  
+[4 Sources Analysis ](#4)  
+........[4.1 Syntax Highlighting ](#4.1)  
+........[4.2 Code Indent ](#4.2)  
+........[4.3 Code Folding ](#4.3)  
+........[4.4 Rapid Switch between Interface & Implementation ](#4.4)  
 ........[4.5 代码收藏 ](#4.5)  
-........[4.6 代码导航 ](#4.6)  
-................[基于标签的导航 ](#4.6.1)  
-................[基于语义的导航 ](#4.6.2)  
-........[4.7 标签列表 ](#4.7)  
-........[4.8 内容查找 ](#4.8)  
-........[4.9 内容替换 ](#4.9)  
-[5 代码开发 ](#5)  
-........[5.1 快速开关注释 ](#5.1)  
-........[5.2 模板补全 ](#5.2)  
+........[4.6 Code Navigation ](#4.6)  
+................[Based on Tags ](#4.6.1)  
+................[Based on Symatics ](#4.6.2)  
+........[4.7 Tag Listing ](#4.7)  
+........[4.8 Content Searching ](#4.8)  
+........[4.9 Content Replacing ](#4.9)  
+[5 Code Developing ](#5)  
+........[5.1 Quick Commenting/Uncommenting ](#5.1)  
+........[5.2 Template Auto-Complete ](#5.2)  
 ........[5.3 coming soon (｡◕‿◕｡) ](#5.3)  
 ........[5.4 智能补全 ](#5.4)  
 ................[基于标签的智能补全 ](#5.4.1)  
 ................[基于语义的智能补全 ](#5.4.2)  
 ........[5.5 由接口快速生成实现框架 ](#5.5)  
 ........[5.6 库信息参考 ](#5.6)  
-[6 工程管理 ](#6)  
-........[6.1 工程文件浏览 ](#6.1)  
-........[6.2 多文档编辑 ](#6.2)  
-........[6.3 环境恢复 ](#6.3)  
-[7 工具链集成 ](#7)  
-........[7.1 编译器/构建工具集成 ](#7.1)  
-................[代码编译 ](#7.1.1)  
-................[系统构建 ](#7.1.2)  
-................[一键编译 ](#7.1.3)  
-........[7.2 静态分析器集成 ](#7.2)  
-[8 其他辅助 ](#8)  
+[6 Project Management ](#6)  
+........[6.1 Project Files Browsing ](#6.1)  
+........[6.2 Multi-File Editing ](#6.2)  
+........[6.3 Environment Restoring ](#6.3)  
+[7 Tool Chain Integration ](#7)  
+........[7.1 Compiler/Build-Tool Integration ](#7.1)  
+................[Comilation ](#7.1.1)  
+................[Building ](#7.1.2)  
+................[One-Key Compilation ](#7.1.3)  
+........[7.2 Static Analyzer Integration ](#7.2)  
+[8 Misc Helpers ](#8)  
 ........[8.1 快速编辑结对符 ](#8.1)  
-........[8.2 支持分支的 undo ](#8.2)  
-........[8.3 快速移动 ](#8.3)  
-........[8.4 markdown 即时预览 ](#8.4)  
-........[8.5 中/英输入平滑切换 ](#8.5)  
+........[8.2 Undo with Branches ](#8.2)  
+........[8.3 Fast Movement ](#8.3)  
+........[8.4 Markdown Real-Time Preview ](#8.4)  
+........[8.5 Switching between Chinese & English Input Methods ](#8.5)  
 [9 尾声](#9)
 
 
 ##【正文】
 ----
 
-开始前，我假设你：0）具备基本的 vim 操作能力，清楚如何打开/编辑/保存文档、命令与插入模式间切换；1）希望将 vim 打造成 C/C++ 语言的 IDE，而非其他语言。
+Before we start, let's assume that: 0）you have basic knowledge about vim: knowing how to open/edit/save files and how to switch between command & insert modes; 1) you want to make vim an IDE for C/C++, not other programming languages.
 
+You can easily find 128+ advantages about vim. But for me, there are only 2: 0) What you think is what you get: vim makes me type as fast as what I think. 1) What you need is what you get: 
 关于 vim 的优点，你在网上能查到 128+ 项，对我而言，只有两项：0）所思即所得，让手输入的速度跟上大脑思考的速度，1）所需即所获，只有你想不到的功能、没有实现不了的插件。希望获得前者的能力，你需要两本教程深入学习，《Practical Vim: Edit Text at the Speed of Thought》和《vim user manual》；要想拥有后者的能力，通读本文 -。-#。对于 vim 的喜爱，献上湿哥哥以表景仰之情：
 <div align="center">
 vi 之大道如我心之禅，<br />
